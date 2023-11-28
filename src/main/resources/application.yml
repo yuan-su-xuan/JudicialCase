@@ -6,3 +6,8 @@ spring:
       uri: mongodb://admin:123456@172.19.241.228:27017/candidate?authSource=admin
 knife4j:
   enable: true
+elasticsearch:
+  host: 172.19.241.10
+  port: 9200
+  userName: user-es
+  password: 123
