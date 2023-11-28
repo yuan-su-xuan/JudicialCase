@@ -1,0 +1,8 @@
+server:
+  port: 8090
+spring:
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@172.19.241.228:27017/candidate?authSource=admin
+knife4j:
+  enable: true
