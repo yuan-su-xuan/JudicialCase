@@ -9,4 +9,6 @@ import java.util.List;
 public interface SearchService {
 
     RespBean getJudicialCaseBySearch(SearchVo searchVo);
+
+    RespBean getSearchByMongo(SearchVo searchVo);
 }

@@ -7,6 +7,7 @@ import com.yuansu.judicialcase.vo.SearchVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -40,5 +41,18 @@ public class CandidateController {
         String keyword = (String) data.get("keyword");
         SearchVo searchVo = new SearchVo(keyword,searchWay,page,size);
         return searchService.getJudicialCaseBySearch(searchVo);
+    }
+
+    @PostMapping("/searchByMongo")
+    public RespBean getSearchResultByMongo(@RequestBody Map data) {
+        String searchWay = (String) data.get("searchWay");
+        Integer size = 10;
+        if(data.get("size")!=null&&data.get("size").toString().length()>0){
+            size = (Integer) data.get("size");
+        }
+        Integer page = (Integer) data.get("page");
+        String keyword = (String) data.get("keyword");
+        SearchVo searchVo = new SearchVo(keyword,searchWay,page,size);
+        return searchService.getSearchByMongo(searchVo);
     }
 }
