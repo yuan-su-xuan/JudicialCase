@@ -29,11 +29,11 @@ public class CandidateController {
         return RespBean.success(candidateService.getSimilarCandidatesByPaid(pid));
     }
 
-    @GetMapping("/search")
+    @RequestMapping("/search")
     public RespBean getSearchResult(@RequestBody Map data){
         String searchWay = (String) data.get("searchWay");
         Integer size = 10;
-        if(data.get("size")!=null&&data.get("size").toString().length()>0){
+        if(data.get("size")!=null&& !data.get("size").toString().isEmpty()){
             size = (Integer) data.get("size");
         }
         Integer page = (Integer) data.get("page");
