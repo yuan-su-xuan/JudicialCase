@@ -1,6 +1,7 @@
 package com.yuansu.judicialcase.util;
 
 import com.yuansu.judicialcase.dao.Candidate;
+import com.yuansu.judicialcase.dao.Similarity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -26,6 +27,13 @@ public class MongoUtil {
         Query query = new Query();
         query.addCriteria(Criteria.where("pid").in(pidList));
         return mongoTemplate.find(query, Candidate.class);
+    }
+
+    public Similarity querySimilarityByPid(Integer pid) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("pid").is(pid));
+
+        return mongoTemplate.findOne(query, Similarity.class);
     }
 }
 
